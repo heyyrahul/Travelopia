@@ -59,7 +59,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div style={{ backgroundImage: `url(${signup})`, backgroundSize: 'cover', minHeight: '673px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div style={{ backgroundImage: `url(${signup})`, backgroundSize: 'cover', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Container component="main" maxWidth="sm" style={{  backgroundColor: 'rgba(255, 255, 255, 0.3)', backdropFilter: 'blur(10px)', padding: '20px', borderRadius: '10px' }}>
         <Typography variant="h5" align="center" gutterBottom>
           <img src={logo} alt="logo" style={{ width: '100px', alignContent: 'center' }} />
@@ -97,11 +97,7 @@ const AdminLogin = () => {
           </Button>
         </form>
         <Grid container justifyContent="center" style={{ marginTop: '1rem' }}>
-          <Grid item>
-            <Link href="#" variant="body2">
-              Forgot password?
-            </Link>
-          </Grid>
+          
         </Grid>
       </Container>
       <Snackbar

@@ -45,7 +45,7 @@ export default function Navbar() {
   return (
     <div style={{ backgroundColor: '#556CD6', padding: '10px'}}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link to="/">  
+        <Link to="/" style={{ textDecoration: 'none' }}>  
           <Typography variant="h4" style={{ fontFamily: 'cursive', color: 'white' }}>Travelopia</Typography>
         </Link>  
         <div>
@@ -78,8 +78,8 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <Button component={Link} to="/login" color="inherit" style={{ backgroundColor: '#556CD6', marginRight: '10px' ,border: '1px solid white'}}>User Login</Button>
-              <Button component={Link} to="/adminlogin" color="inherit" style={{ backgroundColor: '#556CD6',border: '1px solid white' }}>Admin Login</Button>
+              <Button component={Link} to="/login" color="inherit" style={{ backgroundColor: '#556CD6', marginRight: '10px' ,border: '1px solid white',color: 'white'}}>User Login</Button>
+              <Button component={Link} to="/adminlogin" color="inherit" style={{ backgroundColor: '#556CD6',border: '1px solid white',color: 'white' }}>Admin Login</Button>
             </>
           )}
           <Snackbar

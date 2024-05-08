@@ -46,7 +46,7 @@ const SignUp = () => {
     }
   };
   return (
-    <div style={{ backgroundImage: `url(${signup})`, backgroundSize: 'cover', minHeight: '673px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div style={{ backgroundImage: `url(${signup})`, backgroundSize: 'cover', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Container component="main" maxWidth="sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', padding: '20px', borderRadius: '10px',backdropFilter: 'blur(10px)' }}>
         <Typography variant="h5" align="center" gutterBottom>
           <img src={logo} alt="logo" style={{ width: '100px' }} />
