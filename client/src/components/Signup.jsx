@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Container, Grid } from '@mui/material';
+import { TextField, Button, Typography, Container, Grid, Snackbar } from '@mui/material';
+import { Alert } from '@mui/material';
 import signup from '../assets/signup.jpg';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
@@ -15,21 +16,33 @@ const SignUp = () => {
     email: '',
     password: ''
   });
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try { 
-      // Send formData to backend API endpoint
       const response = await axios.post(`${apiURL}/users/register`, formData);
       console.log(response.data);
-      Navigate('/login');
+      setSnackbarMessage('Signup Successful');
+      setSnackbarSeverity('success');
+      setOpenSnackbar(true);
+      setTimeout(() => {
+        Navigate('/login');
+      }, 1000);
     } catch (error) {
       console.error('Error registering user:', error.response.data);
+      setSnackbarMessage('Error logging in. Please try again.');
+      setSnackbarSeverity('error');
+      setOpenSnackbar(true);
     }
   };
   return (
@@ -90,6 +103,16 @@ const SignUp = () => {
           </Grid>
         </Grid>
       </Container>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

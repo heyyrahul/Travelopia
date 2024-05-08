@@ -6,10 +6,12 @@ import apiURL from '../api';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
+  { field: 'username', headerName: 'Username', width: 200 },  
   { field: 'destination', headerName: 'Destination', width: 200 },
   { field: 'interests', headerName: 'Interests', width: 200 },
   { field: 'travelers', headerName: 'Travelers', type: 'number', width: 150 },
   { field: 'budget', headerName: 'Budget', width: 150 },
+ 
 ];
 
 const AdminDashboard = () => {
@@ -25,12 +27,14 @@ const AdminDashboard = () => {
       }
     })
       .then(response => {
+        console.log(response.data.trips);
         setApplications(response.data.trips.map((trip, index) => ({
           id: index + 1,
           destination: trip.destination,
           interests: trip.interests,
           travelers: trip.travelers,
           budget: trip.budget,
+          username: trip.username
         })));
       })
       .catch(error => {
