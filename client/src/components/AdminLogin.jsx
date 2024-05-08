@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Container, Grid, Snackbar } from '@mui/material';
-import { Alert } from '@mui/material'; // Import Alert component
+import { Alert } from '@mui/material'; 
 import signup from '../assets/signup.jpg';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
@@ -34,7 +34,6 @@ const AdminLogin = () => {
       console.log(response.data);
       console.log("Login Successful");
 
-      // Extract user data
       const { token, user } = response.data;
       console.log(user);
 
@@ -53,7 +52,6 @@ const AdminLogin = () => {
       }, 1000);
     } catch (error) {
       console.error('Error logging in:', error.response.data);
-      // Show error notification
       setSnackbarMessage('Error logging in. Please try again.');
       setSnackbarSeverity('error');
       setOpenSnackbar(true);

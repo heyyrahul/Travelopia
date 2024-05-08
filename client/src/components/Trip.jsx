@@ -25,26 +25,22 @@ const TripForm = () => {
     e.preventDefault();
     
     try {
-      // Retrieve token from local storage
       const token = localStorage.getItem('token');
       
-      // Send formData to backend API endpoint with token in headers
       const response = await axios.post(`${apiURL}/trips`, formData, {
         headers: {
-          Authorization: `Bearer ${token}` // Include token in Authorization header
+          Authorization: `Bearer ${token}` 
         }
       });
       
       console.log(response.data);
 
-      // Show success notification
       setSnackbarSeverity('success');
       setSnackbarMessage('Trip created successfully!');
       setOpenSnackbar(true);
     } catch (error) {
       console.error('Error creating trip:', error.response.data);
       
-      // Show error notification
       setSnackbarSeverity('error');
       setSnackbarMessage('Failed to create trip. Please try again.');
       setOpenSnackbar(true);

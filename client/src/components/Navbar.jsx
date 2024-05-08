@@ -28,7 +28,7 @@ export default function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    handleClose(); // Close the menu
+    handleClose(); 
     Navigate('/login');
     setSnackbarSeverity('success');
     setSnackbarMessage('Logout Successful');
