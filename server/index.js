@@ -1,15 +1,25 @@
-const express = require("express");
-const cors = require("cors");
-const app = express();
+const express = require("express")
+const cors = require("cors")
+const { connection } = require("./config/db")
+const { userRouter } = require("./routes/user.routes")
+const {tripRouter} = require("./routes/trip.routes")
+const { adminRouter } = require("./routes/admin.routes")
 
-const port = process.env.PORT || 3000;
 
+const app = express()
 app.use(cors());
+app.use(express.json())
+app.use("/users", userRouter)
+app.use("/admin",adminRouter)
+app.use("/trips",tripRouter)
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
 
-app.listen(port, () => {
-    console.log(`Server is running on ${port}`);
+app.listen(process.env.port, async() => {
+	try {
+		await connection
+		console.log("connected to the DB")
+		console.log(`Server is running at port ${process.env.port}`)
+	} catch (err) {
+		console.log(err)
+	}
 }) 
