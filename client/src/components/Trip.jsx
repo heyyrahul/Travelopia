@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Button, FormControl, InputLabel, Select, MenuItem, Snackbar, Alert } from '@mui/material';
 import { FaMountain, FaUmbrellaBeach, FaLandmark, FaTree, FaHippo, FaWineBottle } from 'react-icons/fa';
 import background from '../assets/background.mp4'; 
+import axios from 'axios';
+import apiURL from '../api';
 
 const TripForm = () => {
   const [formData, setFormData] = useState({
@@ -11,14 +13,46 @@ const TripForm = () => {
     budget: ''
   });
 
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Send formData to backend API endpoint
-    console.log(formData);
+    
+    try {
+      // Retrieve token from local storage
+      const token = localStorage.getItem('token');
+      
+      // Send formData to backend API endpoint with token in headers
+      const response = await axios.post(`${apiURL}/trips`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}` // Include token in Authorization header
+        }
+      });
+      
+      console.log(response.data);
+
+      // Show success notification
+      setSnackbarSeverity('success');
+      setSnackbarMessage('Trip created successfully!');
+      setOpenSnackbar(true);
+    } catch (error) {
+      console.error('Error creating trip:', error.response.data);
+      
+      // Show error notification
+      setSnackbarSeverity('error');
+      setSnackbarMessage('Failed to create trip. Please try again.');
+      setOpenSnackbar(true);
+    }
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   return (
@@ -141,11 +175,22 @@ const TripForm = () => {
               <MenuItem value="$10000+">$10000+</MenuItem> 
             </Select>
           </FormControl>
-          <Button type="submit" variant="contained" color="primary" style={{ width: '100%', padding: '10px 0' }}>
+          <Button type="submit" variant="contained" color="primary" style={{ width: '100%', padding: '10px 0',backgroundColor: '#DC5431' }}>
             Create My Trip Now
           </Button>
         </form>
       </div>
+      
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

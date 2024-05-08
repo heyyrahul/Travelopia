@@ -3,12 +3,16 @@ import { TextField, Button, Typography, Container, Grid } from '@mui/material';
 import signup from '../assets/signup.jpg';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import apiURL from '../api';
+
 
 const SignUp = () => {
+  const Navigate = useNavigate(); 
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     email: '',
-    phoneNumber: '',
     password: ''
   });
 
@@ -16,12 +20,18 @@ const SignUp = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Send formData to backend API endpoint or perform validation
-    console.log(formData);
-  };
 
+    try { 
+      // Send formData to backend API endpoint
+      const response = await axios.post(`${apiURL}/users/register`, formData);
+      console.log(response.data);
+      Navigate('/login');
+    } catch (error) {
+      console.error('Error registering user:', error.response.data);
+    }
+  };
   return (
     <div style={{ backgroundImage: `url(${signup})`, backgroundSize: 'cover', minHeight: '673px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Container component="main" maxWidth="sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', padding: '20px', borderRadius: '10px',backdropFilter: 'blur(10px)' }}>
@@ -36,8 +46,8 @@ const SignUp = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                label="Name"
-                name="name"
+                  label="Username" 
+                name="username" 
                 value={formData.name}
                 onChange={handleChange}
                 fullWidth
@@ -55,17 +65,7 @@ const SignUp = () => {
                 required
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Phone Number"
-                name="phoneNumber"
-                type="tel"
-                value={formData.phoneNumber}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
-            </Grid>
+             
             <Grid item xs={12}>
               <TextField
                 label="Password"

@@ -1,36 +1,42 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Container, Typography, Card, CardContent, Button, Modal } from '@mui/material';
+import { Container, Typography, Card, CardContent, Modal, CircularProgress } from '@mui/material';
+import axios from 'axios';
+import apiURL from '../api';
 
-// Sample data for demonstration
-const rows = [
-  { id: 1, destination: 'Europe', interests: 'Beaches', travelers: 2, budget: '$5000-$6000' },
-  { id: 2, destination: 'Japan', interests: 'Adventures & Outdoors', travelers: 4, budget: '$7000-$8000' },
-  { id: 3, destination: 'Mexico', interests: 'Nature & Landscape', travelers: 3, budget: '$6000-$7000' },
-];
-
-// Columns configuration for the data grid
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
   { field: 'destination', headerName: 'Destination', width: 150 },
   { field: 'interests', headerName: 'Interests', width: 150 },
   { field: 'travelers', headerName: 'Travelers', type: 'number', width: 130 },
   { field: 'budget', headerName: 'Budget', width: 130 },
-  {
-    field: 'actions',
-    headerName: 'Actions',
-    width: 150,
-    renderCell: (params) => (
-      <strong>
-        <Button variant="contained" color="primary" onClick={() => handleViewApplication(params.row)}>View</Button>
-      </strong>
-    ),
-  },
 ];
 
 const AdminDashboard = () => {
+  const [applications, setApplications] = React.useState([]);
   const [selectedApplication, setSelectedApplication] = React.useState(null);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    setLoading(true);
+    const token = localStorage.getItem('token');
+    axios.get(`${apiURL}/trips`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        setApplications(response.data);
+        console.log(response.data.trips);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   const handleViewApplication = (application) => {
     setSelectedApplication(application);
@@ -46,9 +52,13 @@ const AdminDashboard = () => {
       <Typography variant="h4" gutterBottom>
         Travel Applications
       </Typography>
-      <div style={{ height: 400, width: '100%' }}>
-        <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-      </div>
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        <div style={{ height: 400, width: '100%' }}>
+          <DataGrid rows={applications} columns={columns} pageSize={5} checkboxSelection />
+        </div>
+      )}
       <Modal open={isModalOpen} onClose={handleCloseModal}>
         <Container maxWidth="sm" style={{ marginTop: '3rem', backgroundColor: 'white', padding: '20px', borderRadius: '10px' }}>
           {selectedApplication && (

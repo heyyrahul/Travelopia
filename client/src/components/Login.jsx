@@ -1,24 +1,62 @@
-import  { useState } from 'react';
-import { TextField, Button,  Typography, Container, Grid } from '@mui/material';
+import React, { useState } from 'react';
+import { TextField, Button, Typography, Container, Grid, Snackbar } from '@mui/material';
+import { Alert } from '@mui/material';
 import signup from '../assets/signup.jpg';
 import logo from '../assets/logo.png';
-
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import apiURL from '../api';
 
 const Login = () => {
+  const Navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Send formData to backend API endpoint or perform validation
-    console.log(formData);
+
+    try {
+      const response = await axios.post(`${apiURL}/users/login`, formData);
+      console.log(response.data);
+      console.log("Login Successful");
+
+      const { token, user } = response.data;
+      console.log(user);
+
+      const userName = user ? user : '';
+
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify({ name: userName }));
+
+      setSnackbarMessage('Login Successful');
+      setSnackbarSeverity('success');
+      setOpenSnackbar(true);
+
+     
+      setTimeout(() => {
+        Navigate('/');
+      }, 1000);
+    } catch (error) {
+      console.error('Error logging in:', error.response.data);
+   
+      setSnackbarMessage('Error logging in. Please try again.');
+      setSnackbarSeverity('error');
+      setOpenSnackbar(true);
+    }
   };
 
   return (
@@ -28,7 +66,7 @@ const Login = () => {
           <img src={logo} alt="logo" style={{ width: '100px', alignContent: 'center' }} />
         </Typography>
         <Typography variant="h5" align="center" gutterBottom>
-          Login
+         User Login
         </Typography>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -74,6 +112,16 @@ const Login = () => {
           </Grid>
         </Grid>
       </Container>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
