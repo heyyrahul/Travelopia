@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { Link } from 'react-browser-router';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Snackbar, Alert } from '@mui/material';
 
