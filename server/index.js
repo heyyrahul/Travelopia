@@ -12,13 +12,13 @@ app.use(express.json())
 app.use("/users", userRouter)
 app.use("/admin",adminRouter)
 app.use("/trips",tripRouter)
-
+const port = process.env.PORT || 8080
 
 app.listen(process.env.port, async() => {
 	try {
 		await connection
 		console.log("connected to the DB")
-		console.log(`Server is running at port ${process.env.port}`)
+		console.log(`Server is running at port ${port}`)
 	} catch (err) {
 		console.log(err)
 	}
