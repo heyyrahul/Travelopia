@@ -25,16 +25,13 @@ const AdminDashboard = () => {
       }
     })
       .then(response => {
-        // Transforming the response data into the format expected by DataGrid
-        const formattedData = response.data.trips.map((trip, index) => ({
+        setApplications(response.data.trips.map((trip, index) => ({
           id: index + 1,
           destination: trip.destination,
           interests: trip.interests,
           travelers: trip.travelers,
           budget: trip.budget,
-        }));
-        setApplications(formattedData);
-        console.log(formattedData); 
+        })));
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -53,7 +50,7 @@ const AdminDashboard = () => {
         <CircularProgress />
       ) : (
         <div style={{ height: 400, width: '100%' }}>
-          <DataGrid rows={applications} columns={columns} pageSize={5} checkboxSelection />
+          <DataGrid rows={applications} columns={columns} pageSize={5} disableColumnFilter disableColumnMenu disableColumnSelector disableSorting />
         </div>
       )}
     </Container>
