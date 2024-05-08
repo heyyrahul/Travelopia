@@ -15,7 +15,7 @@ adminRouter.post("/login", async(req,res) => {
 		if (user) {
 			bcrypt.compare(password, user.password, (err, result) => {
 				if (result) {
-					res.status(200).json({msg:"Login Successful!",token:jwt.sign({userId:user._id,name:user.name},process.env.Key)})
+					res.status(200).json({msg:"Login Successful!",token:jwt.sign({userId:user._id,name:user.username},process.env.Key),user:user.username})
 				} else {
 					res.status(400).json({msg: "passwordword does not match"})
 				}
