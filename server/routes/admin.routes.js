@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken")
 const { UserModel } = require("../model/user.model")
 const {BlackListModel} = require("../model/blacklist.model")
 const { auth } = require("../middlewares/auth.middleware")
+const { access } = require("../middlewares/access.middleware")
 
 const adminRouter = express.Router()
 
@@ -44,8 +45,31 @@ adminRouter.post("/logout",auth,async(req,res)=>{
 		res.status(400).json({err})
 	}
 })
+//get
 
+adminRouter.get("/",auth,access("admin"),async(req,res)=>{
+	try{
+		const users = await UserModel.find();
+		res.status(200).json({users})
+	}
+	catch(e){
+		res.status(400).json({err})
+	}
+})
 
+//get by userid
+
+adminRouter.get("/:id",auth,access("admin"),async(req,res)=>{
+	const { id } = req.params
+	try{
+		const user = await UserModel.findOne({_id:id});
+		res.status(200).json({user})
+	}
+	catch(e){
+		res.status(400).json({err})
+	}
+})
+ 
 
 
 module.exports = {
