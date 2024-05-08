@@ -10,7 +10,7 @@ Travelopia aims to simplify the travel experience, offering a comprehensive rang
 ## Full Stack
 
 ## Deployed App- [Travelopia](https://travelopia-rahul.vercel.app/)
- 
+ ## Backend Deployment- [https://travelopia-jge6.onrender.com/](https://travelopia-jge6.onrender.com/)
 
 ## Directory Structure
 ```
