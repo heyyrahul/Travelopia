@@ -52,7 +52,7 @@ const TripForm = () => {
   };
 
   return (
-    <div className="background-video" style={{ position: 'relative', width: '100%', height: '673px', overflow: 'hidden' }}>
+    <div className="background-video" style={{ position: 'relative', width: '100%', height: '100vh', overflowY: 'hidden' }}>
       <video
         id="local-video"
         width="100%"
@@ -60,7 +60,7 @@ const TripForm = () => {
         autoPlay
         loop
         muted
-        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100vh', objectFit: 'cover' }}
       >
         <source src={background} type="video/mp4" />
         Your browser does not support the video tag.
