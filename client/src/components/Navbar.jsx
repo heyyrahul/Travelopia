@@ -43,55 +43,56 @@ export default function Navbar() {
   };
 
   return (
-    <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)',backdropFilter: 'blur(10px)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px' }}>
-      
-      <Link to="/">  
-        <Typography variant="h4" style={{ fontFamily: 'cursive' }}>Travelopia</Typography>
-      </Link>  
-      <div>
-        {isLoggedIn ? (
-          <>
-            <Button
-              id="fade-button"
-              aria-controls={open ? 'fade-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
-              onClick={handleClick}
-              color="inherit"
-              style={{backgroundColor:'#556CD6', borderRadius:'10px',color:'white', marginRight: '10px'}}
-            >
-              <Typography variant="h6" style={{ fontWeight: 'bold' }}>{username}</Typography>
-            </Button>
-            <Menu
-              id="fade-menu"
-              MenuListProps={{
-                'aria-labelledby': 'fade-button',
-              }}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              TransitionComponent={Fade}
-            >
-              <MenuItem>My Trips</MenuItem>
-              <MenuItem onClick={handleLogout}>Logout</MenuItem>
-            </Menu>
-          </>
-        ) : (
-          <>
-            <Button component={Link} to="/login" color="inherit" style={{backgroundColor:'#556CD6', marginRight: '10px'}}>User Login</Button>
-            <Button component={Link} to="/adminlogin" color="inherit" style={{backgroundColor:'#556CD6'}}>Admin Login</Button>
-          </>
-        )}
-        <Snackbar
-          open={openSnackbar}
-          autoHideDuration={6000}
-          onClose={handleCloseSnackbar}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        >
-          <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity}>
-            {snackbarMessage}
-          </Alert>
-        </Snackbar>
+    <div style={{ backgroundColor: '#556CD6', padding: '10px'}}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Link to="/">  
+          <Typography variant="h4" style={{ fontFamily: 'cursive', color: 'white' }}>Travelopia</Typography>
+        </Link>  
+        <div>
+          {isLoggedIn ? (
+            <>
+              <Button
+                id="fade-button"
+                aria-controls={open ? 'fade-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                color="inherit"
+                style={{ backgroundColor: '#556CD6', borderRadius: '10px', color: 'white', marginRight: '10px',border: '1px solid white' }}
+              >
+                <Typography variant="h6" style={{ fontWeight: 'bold' }}>{username}</Typography>
+              </Button>
+              <Menu
+                id="fade-menu"
+                MenuListProps={{
+                  'aria-labelledby': 'fade-button',
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Fade}
+              >
+                <MenuItem>My Trips</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <>
+              <Button component={Link} to="/login" color="inherit" style={{ backgroundColor: '#556CD6', marginRight: '10px' ,border: '1px solid white'}}>User Login</Button>
+              <Button component={Link} to="/adminlogin" color="inherit" style={{ backgroundColor: '#556CD6',border: '1px solid white' }}>Admin Login</Button>
+            </>
+          )}
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={6000}
+            onClose={handleCloseSnackbar}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          >
+            <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity}>
+              {snackbarMessage}
+            </Alert>
+          </Snackbar>
+        </div>
       </div>
     </div>
   );

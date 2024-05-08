@@ -46,7 +46,7 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <Container>
+    <Container style={{ backgroundColor: '#CDE8E5', padding: '20px', borderRadius: '10px', width: '100%',marginTop: '20px'   }}>
       <Typography variant="h4" gutterBottom>
         Travel Applications
       </Typography>
