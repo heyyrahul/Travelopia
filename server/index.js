@@ -14,7 +14,7 @@ app.use("/admin",adminRouter)
 app.use("/trips",tripRouter)
 const port = process.env.PORT || 8080
 
-app.listen(process.env.port, async() => {
+app.listen(port, async() => {
 	try {
 		await connection
 		console.log("connected to the DB")
@@ -22,4 +22,4 @@ app.listen(process.env.port, async() => {
 	} catch (err) {
 		console.log(err)
 	}
-}) 
+})  

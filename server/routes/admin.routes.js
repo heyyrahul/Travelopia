@@ -10,7 +10,7 @@ const adminRouter = express.Router()
 //login
 adminRouter.post("/login", async(req,res) => {
 	const { email, password } = req.body
-	try {
+	try { 
 		const user = await UserModel.findOne({email})
 		if (user) {
 			bcrypt.compare(password, user.password, (err, result) => {
