@@ -19,11 +19,11 @@ app.use('/', (req, res) => {
 })
 
 app.listen(port, async() => {
-	try {
+	try { 
 		await connection
 		console.log("connected to the DB")
 		console.log(`Server is running at port ${port}`)
 	} catch (err) {
 		console.log(err)
 	}
-})  
+})   

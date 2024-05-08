@@ -57,8 +57,8 @@ adminRouter.get("/",auth,access("admin"),async(req,res)=>{
 	}
 })
 
-//get by userid
-
+//get by userid 
+ 
 adminRouter.get("/:id",auth,access("admin"),async(req,res)=>{
 	const { id } = req.params
 	try{
