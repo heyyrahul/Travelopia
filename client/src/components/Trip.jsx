@@ -24,6 +24,14 @@ const TripForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      setSnackbarSeverity('warning');
+      setSnackbarMessage('Please login to continue.');
+      setOpenSnackbar(true);
+      return; 
+    }
     try {
       const token = localStorage.getItem('token');
       
