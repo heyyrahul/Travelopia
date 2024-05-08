@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, FormControl, InputLabel, Select, MenuItem, Snackbar, Alert } from '@mui/material';
+import { Button, FormControl, InputLabel, Select, MenuItem, Snackbar, Alert ,CircularProgress } from '@mui/material';
 import { FaMountain, FaUmbrellaBeach, FaLandmark, FaTree, FaHippo, FaWineBottle } from 'react-icons/fa';
 import background from '../assets/background.mp4'; 
 import axios from 'axios';
@@ -16,6 +16,7 @@ const TripForm = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,7 +34,7 @@ const TripForm = () => {
       return; 
     }
     try {
-      const token = localStorage.getItem('token');
+      setLoading(true);
       
       const response = await axios.post(`${apiURL}/trips`, formData, {
         headers: {
@@ -52,6 +53,8 @@ const TripForm = () => {
       setSnackbarSeverity('error');
       setSnackbarMessage('Failed to create trip. Please try again.');
       setOpenSnackbar(true);
+    }finally {
+      setLoading(false); 
     }
   };
 
@@ -179,7 +182,8 @@ const TripForm = () => {
               <MenuItem value="$10000+">$10000+</MenuItem> 
             </Select>
           </FormControl>
-          <Button type="submit" variant="contained" color="primary" style={{ width: '100%', padding: '10px 0',backgroundColor: '#DC5431' }}>
+          <Button type="submit" variant="contained" color="primary" style={{ width: '100%', padding: '10px 0', backgroundColor: '#DC5431', position: 'relative' }}>
+            {loading && <CircularProgress size={24} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />}
             Create My Trip Now
           </Button>
         </form>
