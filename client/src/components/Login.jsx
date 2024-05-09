@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Container, Grid, Snackbar } from '@mui/material';
+import { TextField, Button, Typography, Container, Grid, Snackbar, CircularProgress } from '@mui/material';
 import { Alert } from '@mui/material';
 import signup from '../assets/signup.jpg';
 import logo from '../assets/logo.png';
@@ -10,6 +10,7 @@ import apiURL from '../api';
 
 const Login = () => {
   const Navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -29,6 +30,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true); 
+
     try {
       const response = await axios.post(`${apiURL}/users/login`, formData);
       console.log(response.data);
@@ -45,7 +48,6 @@ const Login = () => {
       setSnackbarMessage('Login Successful');
       setSnackbarSeverity('success');
       setOpenSnackbar(true);
-
      
       setTimeout(() => {
         Navigate('/');
@@ -56,6 +58,8 @@ const Login = () => {
       setSnackbarMessage('Error logging in. Please try again.');
       setSnackbarSeverity('error');
       setOpenSnackbar(true);
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -93,7 +97,8 @@ const Login = () => {
               />
             </Grid>
           </Grid>
-          <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: '2rem' }}>
+          <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: '2rem', position: 'relative' }} disabled={loading}>
+            {loading && <CircularProgress size={24} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />}
             Log In
           </Button>
         </form>
