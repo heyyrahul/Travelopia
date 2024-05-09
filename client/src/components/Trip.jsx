@@ -81,8 +81,9 @@ const TripForm = () => {
         Your browser does not support the video tag.
       </video>
       <div className="content" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1,  width: '80%' }}>
-        <h1 style={{ color: 'white', textAlign: 'center' }}>We Care, So You Can Travel Carefree</h1>
-        <h3 style={{ color: 'white', textAlign: 'center' }}>Let Our Experts Plan Your Private, Tailor-Made and Secure Tour in 70+ Inspiring Destinations.</h3>
+      <h1 style={{ color: 'rgba(255, 255, 255, 0.8)', textAlign: 'center', fontWeight: 600 }}>We Care, So You Can Travel Carefree</h1>
+<h3 style={{ color: 'rgba(255, 255, 255, 0.6)', textAlign: 'center', fontWeight: 400 }}>Let Our Experts Plan Your Private, Tailor-Made and Secure Tour in 70+ Inspiring Destinations.</h3>
+
         <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: '100%', margin: 'auto',backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px', }}>
           <FormControl fullWidth style={{ marginRight: '10px' }}>
             <InputLabel id="destination-label">Where do you want to go?</InputLabel>
