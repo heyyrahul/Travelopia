@@ -30,11 +30,10 @@ tripRouter.post("/", auth, async (req, res) => {
 tripRouter.get("/", auth, access("admin"), async (req, res) => {
   try {
     const trips = await Trip.find();
-    // Iterate over each trip and fetch the associated user's username
     const tripsWithUsername = await Promise.all(trips.map(async (trip) => {
       const user = await UserModel.findById(trip.userId);
-      const username = user ? user.username : 'Unknown'; // Set default username if user not found
-      return { ...trip.toObject(), username }; // Add username to the trip object
+      const username = user ? user.username : 'Unknown'; 
+      return { ...trip.toObject(), username }; 
     }));
     res.status(200).json({ trips: tripsWithUsername });
   } catch (e) {     

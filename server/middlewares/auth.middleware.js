@@ -18,7 +18,7 @@ const auth = async(req,res,next) => {
 						 req.role = user.role;
 						 req.id = user._id;
 						 
-						console.log(decoded);
+						console.log(decoded);		
 						next();
 					}
 					else{
