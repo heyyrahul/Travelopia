@@ -27,6 +27,7 @@ tripRouter.post("/", auth, async (req, res) => {
   }
 });
 
+//get all users
 tripRouter.get("/", auth, access("admin"), async (req, res) => {
   try {
     const trips = await Trip.find();
