@@ -59,17 +59,12 @@ my-app/
 
 
 
-
-
-
-https://github.com/heyyrahul/python-magician-6789/assets/79692865/5978a340-3bf2-4a16-87e8-010936b69968
-
+https://github.com/heyyrahul/Travelopia/assets/79692865/905e7afa-fd31-48de-b800-37e832054f81
 
 
 
 
 
-- **Codebase Walkthrough:** [1-5 minutes video link]
 
 ## Features
 
