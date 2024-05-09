@@ -134,7 +134,8 @@ Provided  credentials for authenticated pages:
 ## Signup
 ![signup](https://github.com/sumit1921184/PetPals/assets/79692865/0e0b6265-02bc-4fd5-afda-b852f8c716b8)
 ## Admin Dashboard
-![admin](https://github.com/sumit1921184/PetPals/assets/79692865/b23ad078-922e-4769-bd83-281243c548fd)
+![admin](https://github.com/heyyrahul/python-magician-6789/assets/79692865/9fb34e07-4640-448e-ac5f-0c1f8fe250bc)
+
 
 
 
