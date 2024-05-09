@@ -96,8 +96,8 @@ Quickly set up and start the project with these steps:
 
 
 Provided  credentials for authenticated pages:
-- **User & Admin Login:** r@gmail.com
-- **Password:** 111
+- **User & Admin Login:** admin@gmail.com
+- **Password:** admin
 
 
 ## APIs Used
