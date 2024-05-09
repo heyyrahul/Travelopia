@@ -1,0 +1,30 @@
+/* styles.css */
+
+/* Hide menu button on small screens */
+.menu-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Hamburger icon */
+  .hamburger-icon {
+    display: none; /* Hide by default */
+  }
+  
+  /* Hide login buttons on small screens */
+  @media screen and (max-width: 576px) {
+    .menu-container {
+      flex-direction: column;
+    }
+  
+    /* Show hamburger icon */
+    .hamburger-icon {
+      display: block;
+    }
+  
+    /* Hide login buttons */
+    .user-login-button, .admin-login-button {
+      display: none;
+    }
+  }
+  

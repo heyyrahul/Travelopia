@@ -34,11 +34,11 @@ const Login = () => {
 
     try {
       const response = await axios.post(`${apiURL}/users/login`, formData);
-      console.log(response.data);
+      // console.log(response.data);
       console.log("Login Successful");
 
       const { token, user } = response.data;
-      console.log(user);
+      // console.log(user);
 
       const userName = user ? user : '';
 

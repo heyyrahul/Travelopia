@@ -186,7 +186,7 @@ const TripForm = () => {
               <MenuItem value="$10000+">$10000+</MenuItem> 
             </Select>
           </FormControl>
-          <Button type="submit" variant="contained" color="primary" style={{ width: '100%', padding: '10px 0', backgroundColor: '#DC5431', position: 'relative' }}>
+          <Button type="submit" variant="contained" color="primary" style={{ width: '100%', padding: '10px 0', backgroundColor: '#DC5431', position: 'relative' }} disabled={loading}>
             {loading && <CircularProgress size={24} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />}
             Create My Trip Now
           </Button>

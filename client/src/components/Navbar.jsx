@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Snackbar, Alert } from '@mui/material';
-
+import travel from '../assets/travel.png';
 export default function Navbar() {
   const Navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -45,9 +45,10 @@ export default function Navbar() {
   return (
     <div style={{ backgroundColor: '#556CD6', padding: '10px'}}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link to="/" style={{ textDecoration: 'none' }}>  
-          <Typography variant="h4" style={{ fontFamily: 'cursive', color: 'white' }}>Travelopia</Typography>
-        </Link>  
+      <Link to="/" style={{ textDecoration: 'none' }}>  
+  <img src={travel} alt="" style={{ width: '120px', height: '70px' , margin: '-10px 10px' }} />
+</Link>
+
         <div>
           {isLoggedIn ? (
             <>
