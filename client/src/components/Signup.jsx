@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Button, Typography, Container, Grid, Snackbar, CircularProgress } from '@mui/material';
 import { Alert } from '@mui/material';
 import signup from '../assets/signup.jpg';
-import logo from '../assets/logo.png';
+import travel from '../assets/travel.png';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +54,7 @@ const SignUp = () => {
     <div style={{ backgroundImage: `url(${signup})`, backgroundSize: 'cover', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Container component="main" maxWidth="sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', padding: '20px', borderRadius: '10px',backdropFilter: 'blur(10px)' }}>
         <Typography variant="h5" align="center" gutterBottom>
-          <img src={logo} alt="logo" style={{ width: '100px' }} />
+        <img src={travel} alt="logo" style={{ width: '120px', alignContent: 'center',height: '78px' }} />
          
               </Typography>
               <Typography variant="h5" align="center" gutterBottom>

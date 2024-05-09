@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Button, Typography, Container, Grid, Snackbar, CircularProgress } from '@mui/material';
 import { Alert } from '@mui/material'; 
 import signup from '../assets/signup.jpg';
-import logo from '../assets/logo.png';
-import { Link } from 'react-router-dom';
+import travel from '../assets/travel.png';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import apiURL from '../api';
@@ -58,7 +57,7 @@ const AdminLogin = () => {
       setSnackbarSeverity('error');
       setOpenSnackbar(true);
     } finally {
-      setLoading(false); // Stop loading animation
+      setLoading(false); 
     }
   };
 
@@ -66,7 +65,7 @@ const AdminLogin = () => {
     <div style={{ backgroundImage: `url(${signup})`, backgroundSize: 'cover', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Container component="main" maxWidth="sm" style={{  backgroundColor: 'rgba(255, 255, 255, 0.3)', backdropFilter: 'blur(10px)', padding: '20px', borderRadius: '10px' }}>
         <Typography variant="h5" align="center" gutterBottom>
-          <img src={logo} alt="logo" style={{ width: '100px', alignContent: 'center' }} />
+          <img src={travel} alt="logo" style={{ width: '120px', alignContent: 'center',height: '80px' }} />
         </Typography>
         <Typography variant="h5" align="center" gutterBottom>
           Admin Login
