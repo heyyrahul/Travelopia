@@ -73,7 +73,11 @@ https://github.com/heyyrahul/Travelopia/assets/79692865/905e7afa-fd31-48de-b800-
 - **Customization and Personalization:** Users can customize their trips based on interests, preferences, and budget, with options for personalization and recommendations based on past behavior or user profiles.
 - **Admin Panel:** Admin panel to handle backend and do basics crud operation.
 
+## Credentials
 
+Provided  credentials for authenticated pages:
+- **User & Admin Login:** admin@gmail.com
+- **Password:** admin
 
 
 
@@ -92,12 +96,7 @@ Quickly set up and start the project with these steps:
    for frontend
    cd client
    npm install
-## Credentials
 
-
-Provided  credentials for authenticated pages:
-- **User & Admin Login:** admin@gmail.com
-- **Password:** admin
 
 
 ## APIs Used
@@ -120,19 +119,19 @@ Provided  credentials for authenticated pages:
 ## ScreenShots  
 
 ## Home Page
-![home](https://github.com/sumit1921184/PetPals/assets/79692865/4ab399bc-1d3e-4ed2-8a0a-23a86fd1455b)
-
-
-## Login
-![login](https://github.com/sumit1921184/PetPals/assets/79692865/cb556bc7-94c9-42f7-b8dd-d9b70109c878)
+![travelopia-rahul vercel app_](https://github.com/heyyrahul/Travelopia/assets/79692865/f35c3472-59f4-4466-8a61-63ff77ab07e3)
 
 ## Signup
-![signup](https://github.com/sumit1921184/PetPals/assets/79692865/0e0b6265-02bc-4fd5-afda-b852f8c716b8)
+
+![travelopia-rahul vercel app_ (3)](https://github.com/heyyrahul/Travelopia/assets/79692865/ba8a0793-0ccf-4d0b-89b2-9db0cdca4a40)
+
+## Login
+![travelopia-rahul vercel app_ (2)](https://github.com/heyyrahul/Travelopia/assets/79692865/a250de92-9a30-429e-a86f-a7adc2645f7f)
 ## Admin Dashboard
-![admin](https://github.com/heyyrahul/python-magician-6789/assets/79692865/9fb34e07-4640-448e-ac5f-0c1f8fe250bc)
 
 
 
+![travelopia-rahul vercel app_ (1)](https://github.com/heyyrahul/Travelopia/assets/79692865/6dfe1649-6748-4de5-b2ca-53ff32e26d3c)
 
 
 
