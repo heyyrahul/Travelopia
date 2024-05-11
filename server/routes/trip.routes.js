@@ -3,7 +3,7 @@ const { Trip } = require("../model/trip.model");
 const { auth } = require("../middlewares/auth.middleware");
 const tripRouter = express.Router();
 const { access } = require("../middlewares/access.middleware");
-const { UserModel } = require("../model/user.model"); // Import the UserModel
+const { UserModel } = require("../model/user.model"); 
 
 tripRouter.post("/", auth, async (req, res) => {
   const { destination, interests, travelers, budget } = req.body;
@@ -40,7 +40,19 @@ tripRouter.get("/", auth, access("admin"), async (req, res) => {
   } catch (e) {     
     res.status(400).json({ e });
   }
+});   
+// get trips for a specific user
+tripRouter.get("/user", auth, async (req, res) => {
+  const userId = req.id.toString();
+
+  try {
+    const trips = await Trip.find({ userId });
+    res.status(200).json({ trips });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
+
 
 module.exports = {
   tripRouter

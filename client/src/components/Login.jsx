@@ -31,9 +31,9 @@ const Login = () => {
     e.preventDefault();
 
     setLoading(true); 
-
+const url='http://localhost:8080'
     try {
-      const response = await axios.post(`${apiURL}/users/login`, formData);
+      const response = await axios.post(`${url}/users/login`, formData);
       // console.log(response.data);
       console.log("Login Successful");
 

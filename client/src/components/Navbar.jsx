@@ -73,7 +73,7 @@ export default function Navbar() {
                 onClose={handleClose}
                 TransitionComponent={Fade}
               >
-                <MenuItem>My Trips</MenuItem>
+              <MenuItem component={Link} to="/trip" onClick={handleClose}>My Trips</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </>
@@ -84,7 +84,7 @@ export default function Navbar() {
             </>
           )}
           <Snackbar
-            open={openSnackbar}
+            open={openSnackbar} 
             autoHideDuration={6000}
             onClose={handleCloseSnackbar}
             anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
