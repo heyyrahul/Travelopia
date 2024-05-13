@@ -5,6 +5,7 @@ import TripForm from "../components/Trip";
 import AdminLogin from "../components/AdminLogin";
 import AdminDashboard from "../components/AdminDashboard";
 import UserTrip from "../components/UserTrip";
+import ErrorPage from "../components/Error";
 
 
 const AllRoutes = () => {
@@ -16,7 +17,8 @@ const AllRoutes = () => {
             <Route path="/signup" element={<SignUp/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/adminlogin" element={<AdminLogin />} />
-            <Route path="/admindashboard" element={<AdminDashboard/>} />
+            <Route path="/admindashboard" element={<AdminDashboard />} />
+            <Route path="*" element={<ErrorPage />} />
         </Routes>
     )
 }
