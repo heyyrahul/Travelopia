@@ -81,7 +81,7 @@ Provided  credentials for authenticated pages:
 
 
 
-## Installation & Getting Started
+## Installation & Getting Started Guide
 
 Quickly set up and start the project with these steps:
 
