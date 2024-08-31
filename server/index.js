@@ -17,7 +17,7 @@ const port = process.env.PORT || 8080
 app.use('/', (req, res) => {
 	res.send('Server is running! ')
 })
-
+ 
 app.listen(port, async() => {
 	try { 
 		await connection
