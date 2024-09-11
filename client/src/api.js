@@ -1,4 +1,4 @@
-const apiURL = `https://travelopia-4a9u.onrender.com`;
+const apiURL = `https://travelopia-jge6.onrender.com`;
 
 
 export default apiURL
